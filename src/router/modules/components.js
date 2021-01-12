@@ -3,69 +3,78 @@
 import Layout from '@/layout'
 
 const componentsRouter = {
-    path: '/components',
+    path: '/sms',
     component: Layout,
-    redirect: 'noRedirect',
-    name: 'ComponentDemo',
+    redirect: '/sms/coupon',
+    name: 'sms',
     meta: {
         title: '营销',
-        icon: 'component'
+        icon: 'sms'
     },
     children: [{
-            path: 'tinymce',
+            path: 'flash',
             component: () =>
-                import ('@/views/components-demo/tinymce'),
-            name: 'TinymceDemo',
-            meta: { title: '秒杀活动列表' }
+                import ('@/views/sms/flash/index'),
+            name: 'flash',
+            meta: { title: '秒杀活动列表', icon: 'sms-flash' }
         },
         {
-            path: 'markdown',
+            path: 'session',
             component: () =>
-                import ('@/views/components-demo/markdown'),
-            name: 'MarkdownDemo',
-            meta: { title: '优惠券列表' }
+                import ('@/views/sms/flash/sessionList'),
+            name: 'session',
+            meta: { title: '秒杀时间段列表' },
+            hidden: true
         },
         {
-            path: 'json-editor',
+            path: 'coupon',
             component: () =>
-                import ('@/views/components-demo/json-editor'),
-            name: 'JsonEditorDemo',
-            meta: { title: '品牌推荐' }
+                import ('@/views/sms/coupon/index'),
+            name: 'coupon',
+            meta: { title: '优惠券列表', icon: 'sms-coupon' }
         },
         {
-            path: 'split-pane',
+            path: 'addCoupon',
             component: () =>
-                import ('@/views/components-demo/split-pane'),
-            name: 'SplitpaneDemo',
-            meta: { title: 'SplitPane' }
+                import ('@/views/sms/coupon/add'),
+            name: 'addCoupon',
+            meta: { title: '添加优惠券' },
+            hidden: true
         },
         {
-            path: 'avatar-upload',
+            path: 'brand',
             component: () =>
-                import ('@/views/components-demo/avatar-upload'),
-            name: 'AvatarUploadDemo',
-            meta: { title: '新品推荐' }
+                import ('@/views/sms/brand/index'),
+            name: 'brand',
+            meta: { title: '品牌推荐', icon: 'product-brand' }
+        },
+        {
+            path: 'new',
+            component: () =>
+                import ('@/views/sms/new/index'),
+            name: 'new',
+            meta: { title: '新品推荐', icon: 'sms-new' }
         },
         {
             path: 'dropzone',
             component: () =>
-                import ('@/views/components-demo/dropzone'),
+                import ('@/views/sms/dropzone'),
             name: 'DropzoneDemo',
-            meta: { title: '人气推荐' }
+            meta: { title: '人气推荐', icon: 'sms-hot' }
         },
         {
             path: 'sticky',
             component: () =>
-                import ('@/views/components-demo/sticky'),
+                import ('@/views/sms/sticky'),
             name: 'StickyDemo',
-            meta: { title: '专题推荐' }
+            meta: { title: '专题推荐', icon: 'sms-subject' }
         },
         {
-            path: 'count-to',
+            path: 'advertise',
             component: () =>
-                import ('@/views/components-demo/count-to'),
-            name: 'CountToDemo',
-            meta: { title: '广告列表' }
+                import ('@/views/sms/advertise/index'),
+            name: 'advertise',
+            meta: { title: '广告列表', icon: 'sms-ad' }
         }
     ]
 }

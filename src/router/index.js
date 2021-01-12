@@ -106,19 +106,6 @@ export const constantRoutes = [{
             name: 'Guide',
             meta: { title: '订单', icon: 'guide', noCache: true }
         }]
-    },
-    {
-        path: '/profile',
-        component: Layout,
-        redirect: '/profile/index',
-        hidden: true,
-        children: [{
-            path: 'index',
-            component: () =>
-                import ('@/views/profile/index'),
-            name: 'Profile',
-            meta: { title: '营销', icon: 'user', noCache: true }
-        }]
     }
 ]
 
