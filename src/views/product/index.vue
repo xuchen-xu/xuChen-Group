@@ -4,14 +4,14 @@
       <div>
         <i class="el-icon-search"></i>
         <span>筛选搜索</span>
-        <el-button
+        <!-- <el-button
           style="float:right"
           type="primary"
           @click="handleSearchList()"
           size="small"
         >
           查询搜索
-        </el-button>
+        </el-button> -->
         <el-button
           style="float:right;margin-right: 15px"
           @click="handleResetSearch()"
@@ -27,14 +27,26 @@
           size="small"
           label-width="140px"
         >
-          <el-form-item label="商品名称：">
+          <!-- <el-form-item label="商品名称：">
             <el-input
               v-model="listQuery.title"
               class="input-width"
               placeholder="商品名称"
-            ></el-input>
-          </el-form-item>
-           <el-form-item label="推荐状态：">
+            ></el-input> 
+          </el-form-item> -->
+          <el-select
+            v-model="value"
+            multiple
+            filterable
+            remote
+            reserve-keyword
+            placeholder="请输入关键词"
+            :remote-method="remoteMethod"
+            :loading="loading"
+          >
+          </el-select>
+
+          <el-form-item label="推荐状态：">
             <el-select
               v-model="listQuery.recommendStatus"
               placeholder="全部"
@@ -50,7 +62,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-        </el-form> 
+        </el-form>
       </div>
     </el-card>
     <router-link to="/product/new">
@@ -102,26 +114,24 @@
       <el-table-column align="center" label="市场价" width="60">
         <template slot-scope="scope">{{ scope.row.market_price }}</template>
       </el-table-column>
-       <el-table-column label="是否推荐" width="120" align="center">
-          <template slot-scope="scope">
-            <el-switch
-              @change="
-                handleRecommendStatusStatusChange(scope.$index, scope.row)
-              "
-              :active-value="1"
-              :inactive-value="0"
-              v-model="scope.row.recommendStatus"
-            >
-            </el-switch>
-          </template>
-        </el-table-column>
+      <el-table-column label="是否推荐" width="120" align="center">
+        <template slot-scope="scope">
+          <el-switch
+            @change="handleRecommendStatusStatusChange(scope.$index, scope.row)"
+            :active-value="1"
+            :inactive-value="0"
+            v-model="scope.row.recommendStatus"
+          >
+          </el-switch>
+        </template>
+      </el-table-column>
       <el-table-column label="操作" width="150" align="center">
         <template slot-scope="scope">
           <!-- <router-link to="/product/edit"> -->
-           <el-button
+          <el-button
             size="mini"
             type="primary"
-            @click="handleEdit(scope.row.id,scope.row)"
+            @click="handleEdit(scope.row.id, scope.row)"
             >编辑</el-button
           >
           <!-- </router-link> -->
@@ -133,7 +143,7 @@
           >
         </template>
       </el-table-column>
-       <!-- <el-dialog title="设置排序" :visible.sync="sortDialogVisible" width="40%">
+      <!-- <el-dialog title="设置排序" :visible.sync="sortDialogVisible" width="40%">
       <el-form :model="sortDialogData" label-width="150px">
         <el-form-item label="排序：">
           <el-input
@@ -165,6 +175,7 @@
 <script>
 import { getProductList, deleteProduct } from "@/api/productself";
 import Pagination from "@/components/Pagination";
+import { data as dataorigin } from "../../../mock/product";
 
 const defaultListQuery = {
   page: 1,
@@ -176,12 +187,12 @@ const defaultListQuery = {
 const defaultRecommendOptions = [
   {
     label: "未推荐",
-    value: 0,
+    value: 0
   },
   {
     label: "推荐中",
-    value: 1,
-  },
+    value: 1
+  }
 ];
 
 export default {
@@ -199,10 +210,10 @@ export default {
       //   page: 1,
       //   limit: 3
       // }
-       options: [],
-        value: [],
-        loading: false,
-        states:["mm"]
+      options: [],
+      value: [],
+      loading: false,
+      states: ["mm"]
     };
   },
   created() {
@@ -236,33 +247,45 @@ export default {
       this.multipleSelection = val;
     },
     remoteMethod(query) {
-      console.log(query)
+      console.log(query);
       if (query !== "") {
         // this.loading = true;
         setTimeout(() => {
           // this.loading = false;
-          console.log(this.list)
-          this.options = this.list.filter(item => {
-           return item.title.toLowerCase().indexOf(query.toLowerCase()) > -1;
+          // console.log(this.list);
+          var productList = dataorigin.items.find(item => {
+            if (query == item.title) {
+              return item;
+            }
+            console.log(item, "00000");
           });
+          console.log(productList, "1111");
+          var arr = [];
+          arr.push(productList);
+        //   for (let i in productList) {
+        //     arr.push(productList[i]); //属性
+        //   };
+        //   console.log(arr,"33333")
+        //   this.list=arr
+        this.list=arr;
         }, 200);
         // console.log(this.options);
       } else {
-        this.options = [];
+        // this.options = [];
       }
     },
-    handleEdit(index,row){
-         this.$router.push({ path: '/product/edit/', query:{id:row.id}});
-         console.log(row.id)
+    handleEdit(index, row) {
+      this.$router.push({ path: "/product/edit/", query: { id: row.id } });
+      console.log(row.id);
     }
   },
   components: {
     Pagination
-  },
-  mounted() {
-    this.list = this.states.map(item => {
-      return { title: `title:${item.title}` };
-    });
   }
+  // mounted() {
+  //   this.list = this.states.map(item => {
+  //     return { title: `title:${item.title}` };
+  //   });
+  // }
 };
 </script>

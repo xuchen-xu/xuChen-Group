@@ -47,7 +47,7 @@
           <el-input v-model="ruleForm.stock_quantity"></el-input>
         </el-col>
       </el-form-item>
-       <el-form-item label="是否推荐，1为推荐，其他数字为不推荐" required prop="recommendStatus">
+       <el-form-item label="是否推荐，1为推荐，其他数字为不推荐" prop="recommendStatus">
         <el-col :span="11">
           <el-input v-model="ruleForm.stock_quantity"></el-input>
         </el-col>
@@ -59,8 +59,6 @@
     </el-form>
   </div>
 </template>
-
-
 
 <script>
 import { addProduct } from "@/api/productself";

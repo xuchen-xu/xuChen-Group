@@ -13,10 +13,10 @@
           </el-input>
         </el-col>
       </el-form-item>
-      <el-form-item label="商品名字" prop="title">
+      <el-form-item label="商品名字" prop="title" v-for="keyItem in Object.keys(list)" :key="keyItem"> 
         <el-col :span="11">
-          <el-input v-model="ruleForm.title"> 
-            {{list.title}}
+          <el-input v-model="ruleForm.title" > 
+           <!-- <span >{{keyItem}}</span> -->
           </el-input>
         </el-col>
       </el-form-item>
