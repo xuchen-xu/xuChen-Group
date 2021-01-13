@@ -17,6 +17,11 @@
           <el-input v-model="ruleForm.title"></el-input>
         </el-col>
       </el-form-item>
+        <el-form-item label="时间" required prop="add_time">
+        <el-col :span="11">
+          <el-input v-model="ruleForm.add_time"></el-input>
+        </el-col>
+      </el-form-item>
       <el-form-item label="摘要" required prop="zhaiyao">
         <el-col :span="11">
           <el-input v-model="ruleForm.zhaiyao"></el-input>
@@ -47,9 +52,9 @@
           <el-input v-model="ruleForm.stock_quantity"></el-input>
         </el-col>
       </el-form-item>
-       <el-form-item label="是否推荐，1为推荐，其他数字为不推荐" prop="recommendStatus">
+       <el-form-item label="是否推荐，默认值为1为推荐" prop="recommendStatus">
         <el-col :span="11">
-          <el-input v-model="ruleForm.stock_quantity"></el-input>
+          <el-input v-model="ruleForm.recommendStatus"></el-input>
         </el-col>
       </el-form-item>
       <el-form-item>
@@ -90,12 +95,14 @@ export default {
       ruleForm: {
         id: "",
         title: "",
+        add_time:"",
         zhaiyao: "",
         click: "",
         img_url: "",
         sell_price: "",
         market_price: "",
-        stock_quantity: ""
+        stock_quantity: "",
+        recommendStatus:1
       },
       rules: {
         id: [

@@ -177,6 +177,7 @@ export default [
         return item;
       });
       console.log(productDetail)
+      data.items=productDetail;
       return {
         code: 20000,
         data: {

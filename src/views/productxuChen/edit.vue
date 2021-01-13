@@ -8,46 +8,49 @@
     >
       <el-form-item label="id" prop="id">
         <el-col :span="11">
-          <el-input v-model="ruleForm.id">
+          <el-input v-model="list.id">
             <!-- prop="id" -->
           </el-input>
         </el-col>
       </el-form-item>
-      <el-form-item label="商品名字" prop="title" v-for="keyItem in Object.keys(list)" :key="keyItem"> 
+      <el-form-item label="名称" prop="title">
         <el-col :span="11">
-          <el-input v-model="ruleForm.title" > 
-           <!-- <span >{{keyItem}}</span> -->
-          </el-input>
+          <el-input v-model="list.title"> </el-input>
+        </el-col>
+      </el-form-item>
+      <el-form-item label="添加时间" prop="time">
+        <el-col :span="11">
+          <el-input v-model="list.add_time"> </el-input>
         </el-col>
       </el-form-item>
       <el-form-item label="摘要" prop="zhaiyao">
         <el-col :span="11">
-          <el-input v-model="ruleForm.zhaiyao"> </el-input>
+          <el-input v-model="list.zhaiyao"> </el-input>
         </el-col>
       </el-form-item>
       <el-form-item label="点击次数" prop="click">
         <el-col :span="11">
-          <el-input v-model="ruleForm.click"> </el-input>
+          <el-input v-model="list.click"> </el-input>
         </el-col>
       </el-form-item>
       <el-form-item label="图片链接" prop="img_url">
         <el-col :span="11">
-          <el-input v-model="ruleForm.img_url"> </el-input>
+          <el-input v-model="list.img_url"> </el-input>
         </el-col>
       </el-form-item>
       <el-form-item label="销售价" prop="sell_price">
         <el-col :span="11">
-          <el-input v-model="ruleForm.sell_price"> </el-input>
+          <el-input v-model="list.sell_price"> </el-input>
         </el-col>
       </el-form-item>
       <el-form-item label="市场价" prop="market_price">
         <el-col :span="11">
-          <el-input v-model="ruleForm.market_price"> </el-input>
+          <el-input v-model="list.market_price"> </el-input>
         </el-col>
       </el-form-item>
       <el-form-item label="库存" prop="stock_quantity">
         <el-col :span="11">
-          <el-input v-model="ruleForm.stock_quantity"></el-input>
+          <el-input v-model="list.stock_quantity"></el-input>
         </el-col>
       </el-form-item>
       <el-form-item
@@ -55,7 +58,7 @@
         prop="recommendStatus"
       >
         <el-col :span="11">
-          <el-input v-model="ruleForm.stock_quantity"></el-input>
+          <el-input v-model="list.stock_quantity"></el-input>
         </el-col>
       </el-form-item>
       <el-form-item>
@@ -94,16 +97,16 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      // this.$refs[formName].validate(async valid => {
-      //   if (valid) {
-      //     let result = await editProduct(this.ruleForm);
-      //     console.log(result)
-      //   //   this.$router.push("/product/index")
-      //   } else {
-      //     console.log("error submit!!");
-      //     return false;
-      //   }
-      // });
+      this.$refs[formName].validate(async valid => {
+        if (valid) {
+          let result = await editProduct(this.list);
+          // console.log(result)
+          this.$router.push("/product/index")
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
@@ -111,17 +114,16 @@ export default {
     // getInform(){
     //  console.log(this.$route.query.id)
     // }
-   getInform(id) {
+    getInform(id) {
       let product = dataorigin.items.find(item => {
         if (item.id == id) {
           return item;
         }
       });
-       console.log(product);
-       this.list=product;
-       console.log(this.list,"0000000000")
-    },
-  
+      console.log(product);
+      this.list = product;
+      console.log(this.list, "0000000000");
+    }
   }
 };
 </script>
