@@ -47,6 +47,11 @@
           <el-input v-model="ruleForm.stock_quantity"></el-input>
         </el-col>
       </el-form-item>
+       <el-form-item label="是否推荐，1为推荐，其他数字为不推荐" required prop="recommendStatus">
+        <el-col :span="11">
+          <el-input v-model="ruleForm.stock_quantity"></el-input>
+        </el-col>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
@@ -58,7 +63,7 @@
 
 
 <script>
-import { addProduct } from "@/api/product";
+import { addProduct } from "@/api/productself";
 export default {
   data() {
     function isNumber(val) {

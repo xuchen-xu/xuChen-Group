@@ -21,7 +21,7 @@
         </el-button>
       </div>
       <div style="margin-top: 15px">
-        <!-- <el-form
+        <el-form
           :inline="true"
           :model="listQuery"
           size="small"
@@ -34,25 +34,23 @@
               placeholder="商品名称"
             ></el-input>
           </el-form-item>
-        </el-form> -->
-        <el-select
-          v-model="value"
-          multiple
-          filterable
-          remote
-          reserve-keyword
-          placeholder="请输入关键词"
-          :remote-method="remoteMethod"
-          :loading="loading"
-        >
-          <el-option
-            v-for="item in options"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          >
-          </el-option>
-        </el-select>
+           <el-form-item label="推荐状态：">
+            <el-select
+              v-model="listQuery.recommendStatus"
+              placeholder="全部"
+              clearable
+              class="input-width"
+            >
+              <el-option
+                v-for="item in recommendOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </el-form-item>
+        </el-form> 
       </div>
     </el-card>
     <router-link to="/product/new">
@@ -67,11 +65,11 @@
       highlight-current-row
       @selection-change="handleSelectionChange"
     >
-      <el-table-column
+      <!-- <el-table-column
         type="selection"
         width="60"
         align="center"
-      ></el-table-column>
+      ></el-table-column> -->
 
       <el-table-column align="center" label="序号" width="95">
         <template slot-scope="scope">{{ scope.$index }}</template>
@@ -104,8 +102,29 @@
       <el-table-column align="center" label="市场价" width="60">
         <template slot-scope="scope">{{ scope.row.market_price }}</template>
       </el-table-column>
-      <el-table-column label="操作">
+       <el-table-column label="是否推荐" width="120" align="center">
+          <template slot-scope="scope">
+            <el-switch
+              @change="
+                handleRecommendStatusStatusChange(scope.$index, scope.row)
+              "
+              :active-value="1"
+              :inactive-value="0"
+              v-model="scope.row.recommendStatus"
+            >
+            </el-switch>
+          </template>
+        </el-table-column>
+      <el-table-column label="操作" width="150" align="center">
         <template slot-scope="scope">
+          <!-- <router-link to="/product/edit"> -->
+           <el-button
+            size="mini"
+            type="primary"
+            @click="handleEdit(scope.row.id,scope.row)"
+            >编辑</el-button
+          >
+          <!-- </router-link> -->
           <el-button
             size="mini"
             type="danger"
@@ -114,6 +133,24 @@
           >
         </template>
       </el-table-column>
+       <!-- <el-dialog title="设置排序" :visible.sync="sortDialogVisible" width="40%">
+      <el-form :model="sortDialogData" label-width="150px">
+        <el-form-item label="排序：">
+          <el-input
+            v-model="sortDialogData.sort"
+            style="width: 200px"
+          ></el-input>
+        </el-form-item>
+      </el-form>
+      <span slot="footer">
+        <el-button @click="sortDialogVisible = false" size="small"
+          >取 消</el-button
+        >
+        <el-button type="primary" @click="handleUpdateSort" size="small"
+          >确 定</el-button
+        >
+      </span>
+    </el-dialog> -->
     </el-table>
     <pagination
       v-show="total > 0"
@@ -126,24 +163,38 @@
 </template>
 
 <script>
-import { getProductList, deleteProduct } from "@/api/product";
+import { getProductList, deleteProduct } from "@/api/productself";
 import Pagination from "@/components/Pagination";
 
 const defaultListQuery = {
   page: 1,
   limit: 5,
-  title: null
-  // recommendStatus: null
+  title: null,
+  recommendStatus: null
 };
+
+const defaultRecommendOptions = [
+  {
+    label: "未推荐",
+    value: 0,
+  },
+  {
+    label: "推荐中",
+    value: 1,
+  },
+];
 
 export default {
   data() {
     return {
       multipleSelection: [],
       listQuery: Object.assign({}, defaultListQuery),
+      recommendOptions: Object.assign({}, defaultRecommendOptions),
       list: [],
       listLoading: true,
       total: 0,
+      sortDialogVisible: false,
+      sortDialogData: { sort: 0, id: null },
       // listQuery: {
       //   page: 1,
       //   limit: 3
@@ -174,9 +225,9 @@ export default {
     handleSearchList(title) {
       // this.getProList();
       this.listQuery.page = 1;
-      var arr = list.filter(item => item.title == title);
+      // var arr = list.filter(item => item.title == title);
       this.getProList();
-      list = arr;
+      // list = arr;
     },
     handleResetSearch() {
       this.listQuery = Object.assign({}, defaultListQuery);
@@ -187,9 +238,9 @@ export default {
     remoteMethod(query) {
       console.log(query)
       if (query !== "") {
-        this.loading = true;
+        // this.loading = true;
         setTimeout(() => {
-          this.loading = false;
+          // this.loading = false;
           console.log(this.list)
           this.options = this.list.filter(item => {
            return item.title.toLowerCase().indexOf(query.toLowerCase()) > -1;
@@ -199,6 +250,10 @@ export default {
       } else {
         this.options = [];
       }
+    },
+    handleEdit(index,row){
+         this.$router.push({ path: '/product/edit/', query:{id:row.id}});
+         console.log(row.id)
     }
   },
   components: {

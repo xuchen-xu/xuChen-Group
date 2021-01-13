@@ -73,6 +73,12 @@ export const constantRoutes = [
         component: () => import('@/views/product/new'),
         meta: { title: '新增商品', icon: 'table' },
         hidden: true    //不会在菜单栏中显示
+      },
+      {
+        path: 'edit',
+        component: () => import('@/views/product/edit'),
+        meta: { title: '编辑商品', icon: 'table' },
+        hidden: true    //不会在菜单栏中显示
       }
     ]
   },

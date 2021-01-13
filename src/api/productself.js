@@ -26,3 +26,22 @@ export function addProduct(params) {
         data: params
     })
 }
+
+
+//注意：post请求参数需要通过data来传递
+export function editProduct(params) {
+    return request({
+        url: '/vue-admin-template/product/edit',
+        method: 'post',
+        data: params
+    })
+}
+
+//注意：post请求参数需要通过data来传递
+// export function getEditProduct(id) {
+//     return request({
+//         url: '/vue-admin-template/product/edit/:id',
+//         method: 'get',
+//         // data: params
+//     })
+// }
