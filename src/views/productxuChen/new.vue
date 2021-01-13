@@ -131,7 +131,7 @@ export default {
       this.$refs[formName].validate(async valid => {
         if (valid) {
           let result = await addProduct(this.ruleForm);
-          this.$router.push("/product/index")
+          this.$router.push("/productxuchen/index")
         } else {
           console.log("error submit!!");
           return false;

@@ -74,7 +74,7 @@
 
 <script>
 import { editProduct, getEditProduct } from "@/api/productself";
-import { data as dataorigin } from "../../../mock/product";
+import { data as dataorigin } from "../../../mock/productxuchen";
 export default {
   data() {
     return {
@@ -101,7 +101,7 @@ export default {
         if (valid) {
           let result = await editProduct(this.list);
           // console.log(result)
-          this.$router.push("/product/index")
+          this.$router.push("/productxuchen/index")
         } else {
           console.log("error submit!!");
           return false;

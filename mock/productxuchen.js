@@ -113,7 +113,7 @@ exports.data = data ;
 
 export default [
   {
-    url: "/vue-admin-template/product/list",
+    url: "/vue-admin-template/productxuchen/list",
     type: "get",
     response: config => {
       const { page = 1, limit = 3 } = config.query;
@@ -128,7 +128,7 @@ export default [
     }
   },
   {
-    url: "/vue-admin-template/product/delete",
+    url: "/vue-admin-template/productxuchen/delete",
     type: "get",
     response: config => {
       const id = config.query.id;
@@ -148,7 +148,7 @@ export default [
     }
   },
   {
-    url: "/vue-admin-template/product/new",
+    url: "/vue-admin-template/productxuchen/new",
     type: "post",
     response: config => {
       var product = config.body;
@@ -163,11 +163,11 @@ export default [
     }
   },
   {
-    url: "/vue-admin-template/product/edit",
+    url: "/vue-admin-template/productxuchen/edit",
     type: "post",
     response: config => {
       var product = config.body;
-      console.log(product, "99999999999999999999999999");
+      // console.log(product, "99999999999999999999999999");
       // data.items.push(product);
       // console.log(data)
       var productDetail = data.items.map(item => {
@@ -176,7 +176,7 @@ export default [
         }
         return item;
       });
-      console.log(productDetail)
+      // console.log(productDetail)
       data.items=productDetail;
       return {
         code: 20000,

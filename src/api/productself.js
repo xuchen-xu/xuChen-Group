@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function getProductList(params) {
     return request({
-        url: '/vue-admin-template/product/list',
+        url: '/vue-admin-template/productxuchen/list',
         method: 'get',
         params
     })
@@ -11,7 +11,7 @@ export function getProductList(params) {
 
 export function deleteProduct(params) {
     return request({
-        url: '/vue-admin-template/product/delete/',
+        url: '/vue-admin-template/productxuchen/delete/',
         method: 'get',
         params
     })
@@ -21,7 +21,7 @@ export function deleteProduct(params) {
 //注意：post请求参数需要通过data来传递
 export function addProduct(params) {
     return request({
-        url: '/vue-admin-template/product/new/',
+        url: '/vue-admin-template/productxuchen/new/',
         method: 'post',
         data: params
     })
@@ -31,7 +31,7 @@ export function addProduct(params) {
 //注意：post请求参数需要通过data来传递
 export function editProduct(params) {
     return request({
-        url: '/vue-admin-template/product/edit',
+        url: '/vue-admin-template/productxuchen/edit',
         method: 'post',
         data: params
     })

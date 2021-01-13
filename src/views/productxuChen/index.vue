@@ -65,7 +65,7 @@
         </el-form>
       </div>
     </el-card>
-    <router-link to="/product/new">
+    <router-link to="/productxuchen/new">
       <el-button type="primary">添加商品</el-button>
     </router-link>
     <el-table
@@ -175,7 +175,7 @@
 <script>
 import { getProductList, deleteProduct } from "@/api/productself";
 import Pagination from "@/components/Pagination";
-import { data as dataorigin } from "../../../mock/product";
+import { data as dataorigin } from "../../../mock/productxuchen";
 
 const defaultListQuery = {
   page: 1,
@@ -275,7 +275,7 @@ export default {
       }
     },
     handleEdit(index, row) {
-      this.$router.push({ path: "/product/edit/", query: { id: row.id } });
+      this.$router.push({ path: "/productxuchen/edit/", query: { id: row.id } });
       console.log(row.id);
     }
   },
