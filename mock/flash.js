@@ -71,7 +71,7 @@ export default [{
     url: '/vue-admin-template/product/list',
     type: 'get',
     response: config => {
-        const { page = 1, limit = 3 } = config.query
+        const { page = 1, limit = 5 } = config.query
         const items = data.items
         return {
             code: 20000,

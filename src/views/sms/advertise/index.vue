@@ -15,7 +15,7 @@
         <el-form :inline="true" size="small" label-width="140px">
           <el-form-item label="广告名称：">
             <el-input
-            v-model="input"
+              v-model="input"
               class="input-width"
               placeholder="广告名称"
               clearable
@@ -42,44 +42,79 @@
     <el-card class="operate-container" shadow="never" style="margin-top: 30px">
       <i class="el-icon-tickets"></i>
       <span>数据列表</span>
-      <el-button size="mini" class="btn-add" style="float: right">选择品牌</el-button>
+      <el-button size="mini" class="btn-add" style="float: right"
+        >选择品牌</el-button
+      >
     </el-card>
     <div class="table-container">
-      <el-table :data="tableData" border style="width: 100%; margin-top: 30px">
-        <el-table-column type="selection" width="60" align="center"> </el-table-column>
-        <el-table-column prop="id" label="编号" width="100" align="center">
+      <el-table :data="list" border style="width: 100%; margin-top: 30px">
+        <el-table-column type="selection" width="60" align="center">
         </el-table-column>
-        <el-table-column prop="name" label="活动标题" align="center">
+        <el-table-column label="编号" width="100" align="center">
+          <template slot-scope="scope">{{ scope.row.id }}</template>
         </el-table-column>
-        <el-table-column prop="address" label="活动状态" width="140" align="center"> </el-table-column>
-        <el-table-column prop="address" label="开始时间" width="140" align="center"> </el-table-column>
-        <el-table-column prop="address" label="结束时间" width="140" align="center"> </el-table-column>
-        <el-table-column prop="address" label="上线/下线" width="200" align="center"> </el-table-column>
-        <el-table-column prop="address" label="操作" width="180" align="center">
+        <el-table-column label="广告名称" align="center">
+          <template slot-scope="scope">{{ scope.row.name }}</template>
+        </el-table-column>
+        <el-table-column label="广告位置" width="140" align="center">
+          <template slot-scope="scope">{{scope.row.type}}</template>
+        </el-table-column>
+        <el-table-column label="广告图片" width="140" align="center">
+          <template slot-scope="scope"><img style="height: 80px" :src="scope.row.pic"></template>
+        </el-table-column>
+        <el-table-column label="时间" width="140" align="center">
+           <template slot-scope="scope">
+            <p>开始时间：{{scope.row.start_time}}</p>
+            <p>到期时间：{{scope.row.end_time}}</p>
+          </template>
+        </el-table-column>
+        <el-table-column label="上线/下线" width="200" align="center">
           <template slot-scope="scope">
-            <el-button size="mini"
-                       type="text"
-                       @click="handleSelectSession(scope.$index, scope.row)">设置商品
-            </el-button>
-            <el-button size="mini"
-                       type="text"
-                       @click="handleUpdate(scope.$index, scope.row)">
+            <el-switch
+              @change="handleUpdateStatus(scope.$index, scope.row)"
+              :active-value="1"
+              :inactive-value="0"
+              v-model="scope.row.status"
+            >
+            </el-switch>
+          </template>
+        </el-table-column>
+        <el-table-column label="点击次数" width="200" align="center">
+          <template slot-scope="scope">{{scope.row.click_count}}</template>
+        </el-table-column>
+        <el-table-column label="生成订单" width="200" align="center">
+          <template slot-scope="scope">{{scope.row.order_count}}</template>
+        </el-table-column>
+        <el-table-column label="操作" width="180" align="center">
+          <template slot-scope="scope">
+            <el-button
+              size="mini"
+              type="text"
+              @click="handleUpdate(scope.$index, scope.row)"
+            >
               编辑
             </el-button>
-            <el-button size="mini"
-                       type="text"
-                       @click="handleDelete(scope.$index, scope.row)">删除
+            <el-button
+              size="mini"
+              type="text"
+              @click="handleDelete(scope.$index, scope.row)"
+              >删除
             </el-button>
           </template>
         </el-table-column>
-
       </el-table>
     </div>
   </div>
 </template>
 
 <script>
+import { getAdvertiseList } from "@/api/advertise";
+import Pagination from "@/components/Pagination";
+import { formatDate } from "@/utils/date";
 export default {
+  components: {
+    Pagination,
+  },
   data() {
     return {
       input: "",
@@ -94,8 +129,37 @@ export default {
         },
       ],
       value: "",
-      value1: '',
+      value1: "",
+      listQuery: {
+        page: 1,
+        limit: 5,
+      },
+      list: null,
+      total: 0,
+      listLoading: false,
     };
+  },
+  created() {
+    this.getAllAdvertiseList();
+  },
+  methods: {
+    handleUpdate(){
+
+    },
+    handleDelete(){
+
+    },
+    handleUpdateStatus(){
+
+    },
+    async getAllAdvertiseList() {
+      this.listLoading = true;
+      let result = await getAdvertiseList(this.listQuery);
+      console.log(result, "888888888");
+      this.listLoading = false;
+      this.list = result.data.items;
+      this.total = result.data.total;
+    },
   },
 };
 </script>

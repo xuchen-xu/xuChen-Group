@@ -39,21 +39,25 @@
         </el-form>
       </div>
     </el-card>
-    <el-card class="operate-container" shadow="never">
+    <el-card class="operate-container" shadow="never" style="margin-top: 30px">
       <i class="el-icon-tickets"></i>
       <span>数据列表</span>
       <el-button
         size="mini"
         class="btn-add"
         @click="handleAdd()"
-        style="margin-left: 20px"
+        style="margin-left: 20px; float: right"
         >添加活动</el-button
       >
-      <el-button size="mini" class="btn-add" @click="handleShowSessionList()"
+      <el-button
+        size="mini"
+        class="btn-add"
+        style="float: right"
+        @click="handleShowSessionList()"
         >秒杀时间段列表</el-button
       >
     </el-card>
-    <div class="table-container">
+    <div class="table-container" style="margin-top: 30px">
       <el-table
         ref="flashTable"
         :data="list"
@@ -79,12 +83,12 @@
         </el-table-column>
         <el-table-column label="开始时间" width="140" align="center">
           <template slot-scope="scope">{{
-            scope.row.startDate | formatDate
+            scope.row.start_date | formatDate
           }}</template>
         </el-table-column>
         <el-table-column label="结束时间" width="140" align="center">
           <template slot-scope="scope">{{
-            scope.row.endDate | formatDate
+            scope.row.end_date | formatDate
           }}</template>
         </el-table-column>
         <el-table-column label="上线/下线" width="200" align="center">
@@ -130,7 +134,6 @@
       :limit.sync="listQuery.limit"
       @pagination="getList"
     />
-
     <el-dialog title="添加活动" :visible.sync="dialogVisible" width="40%">
       <el-form
         :model="flashPromotion"
@@ -194,10 +197,10 @@ export default {
     return {
       listQuery: {
         page: 1,
-        limit: 3,
+        limit: 5,
       },
       list: null,
-      total: null,
+      total: 0,
       listLoading: false,
       dialogVisible: false,
       flashPromotion: Object.assign({}, defaultFlashPromotion),
@@ -227,7 +230,7 @@ export default {
     },
   },
   components: {
-    Pagination
+    Pagination,
   },
   methods: {
     handleResetSearch() {
@@ -255,41 +258,41 @@ export default {
       this.$router.push({ path: "/sms/session" });
     },
     handleStatusChange(index, row) {
-      this.$confirm("是否要修改该状态?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      })
-        .then(() => {
-          updateStatus(row.id, { status: row.status }).then((response) => {
-            this.$message({
-              type: "success",
-              message: "修改成功!",
-            });
-          });
-        })
-        .catch(() => {
-          this.$message({
-            type: "info",
-            message: "取消修改",
-          });
-          this.getList();
-        });
+      // this.$confirm("是否要修改该状态?", "提示", {
+      //   confirmButtonText: "确定",
+      //   cancelButtonText: "取消",
+      //   type: "warning",
+      // })
+      //   .then(() => {
+      //     updateStatus(row.id, { status: row.status }).then((response) => {
+      //       this.$message({
+      //         type: "success",
+      //         message: "修改成功!",
+      //       });
+      //     });
+      //   })
+      //   .catch(() => {
+      //     this.$message({
+      //       type: "info",
+      //       message: "取消修改",
+      //     });
+      //     this.getList();
+      //   });
     },
     handleDelete(index, row) {
-      this.$confirm("是否要删除该活动?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-      }).then(() => {
-        deleteFlash(row.id).then((response) => {
-          this.$message({
-            type: "success",
-            message: "删除成功!",
-          });
-          this.getList();
-        });
-      });
+      // this.$confirm("是否要删除该活动?", "提示", {
+      //   confirmButtonText: "确定",
+      //   cancelButtonText: "取消",
+      //   type: "warning",
+      // }).then(() => {
+      //   deleteFlash(row.id).then((response) => {
+      //     this.$message({
+      //       type: "success",
+      //       message: "删除成功!",
+      //     });
+      //     this.getList();
+      //   });
+      // });
     },
     handleUpdate(index, row) {
       this.dialogVisible = true;
@@ -326,10 +329,10 @@ export default {
       });
     },
     handleSelectSession(index, row) {
-      this.$router.push({
-        path: "/sms/selectSession",
-        query: { flashPromotionId: row.id },
-      });
+      // this.$router.push({
+      //   path: "/sms/selectSession",
+      //   query: { flashPromotionId: row.id },
+      // });
     },
     async getList() {
       this.listLoading = true;
@@ -342,6 +345,5 @@ export default {
   },
 };
 </script>
-<style></style>
 
 

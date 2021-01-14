@@ -42,6 +42,22 @@ const componentsRouter = {
             hidden: true
         },
         {
+            path: 'viewCoupon',
+            component: () =>
+                import ('@/views/sms/coupon/viewCoupon'),
+            name: 'viewCoupon',
+            meta: { title: '优惠券领取详情' },
+            hidden: true
+        },
+        {
+            path: 'updateCoupon',
+            component: () =>
+                import ('@/views/sms/coupon/updateCoupon'),
+            name: 'updateCoupon',
+            meta: { title: '修改优惠券' },
+            hidden: true
+        },
+        {
             path: 'brand',
             component: () =>
                 import ('@/views/sms/brand/index'),

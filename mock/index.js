@@ -6,13 +6,24 @@ import role from './role'
 import article from './article'
 import search from './remote-search'
 import flash from './flash'
+import time from './time'
+import couponList from './couponList'
+import brand from './brand'
+import advertise from './advertise'
+import couponHistory from './couponHistory'
+
 
 const mocks = [
     ...user,
     ...role,
     ...article,
     ...search,
-    ...flash
+    ...flash,
+    ...time,
+    ...couponList,
+    ...brand,
+    ...advertise,
+    ...couponHistory
 ]
 
 // for front mock
