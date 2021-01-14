@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import Vue from "vue";
+import Router from "vue-router";
 
-Vue.use(Router)
+Vue.use(Router);
 
 /* Layout */
-import Layout from '@/layout'
+import Layout from "@/layout";
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -34,211 +34,157 @@ import Layout from '@/layout'
 // constantRouterMap：主要是通用部分，每个用户都有的页面
 export const constantRoutes = [
   {
-    path: '/login',
-    component: () => import('@/views/login/index'),
+    path: "/login",
+    component: () => import("@/views/login/index"),
     hidden: true
   },
 
   {
-    path: '/404',
-    component: () => import('@/views/404'),
+    path: "/404",
+    component: () => import("@/views/404"),
     hidden: true
   },
 
   {
-    path: '/',
+    path: "/",
     component: Layout,
-    redirect: '/dashboard',
-    children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
-    }]
-  },
-
-  {
-    path: '/productxuchen',
-    component: Layout,
-    redirect: '/productxuchen/index',
+    redirect: "/dashboard",
     children: [
       {
-        path: 'index',
-        name: 'Product',
-        component: () => import('@/views/productxuChen/index'),
-        meta: { title: '商品列表', icon: 'dashboard' }
-      },
-      {
-        path: 'new',
-        component: () => import('@/views/productxuChen/new'),
-        meta: { title: '新增商品', icon: 'table' },
-        hidden: true    //不会在菜单栏中显示
-      },
-      {
-        path: 'edit',
-        component: () => import('@/views/productxuChen/edit'),
-        meta: { title: '编辑商品', icon: 'table' },
-        hidden: true    //不会在菜单栏中显示
+        path: "dashboard",
+        name: "Dashboard",
+        component: () => import("@/views/dashboard/index"),
+        meta: { title: "Dashboard", icon: "dashboard" }
       }
     ]
   },
-
   // {
-  //   path: '/example',
+  //   path: "/productxuchen",
   //   component: Layout,
-  //   redirect: '/example/table',
-  //   name: 'Example',
-  //   meta: { title: 'Example', icon: 'example' },
+  //   // redirect: '/productxuchen/index',
+  //   name: "sms",
+  //   meta: { title: "营销", icon: "tree" },
   //   children: [
   //     {
-  //       path: 'table',
-  //       name: 'Table',
-  //       component: () => import('@/views/table/index'),
-  //       meta: { title: 'Table', icon: 'table' }
+  //       path: "index",
+  //       name: "Product",
+  //       component: () => import("@/views/productxuChen/index"),
+  //       meta: { title: "新品推荐", icon: "tree" }
+  //       // hidden: true
   //     },
   //     {
-  //       path: 'tree',
-  //       name: 'Tree',
-  //       component: () => import('@/views/tree/index'),
-  //       meta: { title: 'Tree', icon: 'tree' }
-  //     }
-  //   ]
-  // },
-
-  // {
-  //   path: '/form',
-  //   component: Layout,
-  //   children: [
+  //       path: "new",
+  //       component: () => import("@/views/productxuChen/new"),
+  //       meta: { title: "新增商品", icon: "table" },
+  //       hidden: true //不会在菜单栏中显示
+  //     },
   //     {
-  //       path: 'index',
-  //       name: 'Form',
-  //       component: () => import('@/views/form/index'),
-  //       meta: { title: 'Form', icon: 'form' }
+  //       path: "edit",
+  //       component: () => import("@/views/productxuChen/edit"),
+  //       meta: { title: "编辑商品", icon: "table" },
+  //       hidden: true //不会在菜单栏中显示
   //     }
   //   ]
   // },
-
   {
-    path: '/nested',
+    path: "/productxuchen",
     component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
-    children: [
+    redirect: "/productxuchen/hot",
+    name: "sms",
+    meta: { title: "营销", icon: "tree" },
+    children: [ 
       {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
-        children: [
-          {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
-          },
-          {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
-          }
-        ]
+        path: "index",
+        name: "homeNew",
+        component: () => import("@/views/productxuChen/index"),
+        meta: { title: "新品推荐", icon: "form" }
       },
       {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        meta: { title: 'menu2' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
+        path: "new",
+        component: () => import("@/views/productxuChen/new"),
+        meta: { title: "新增商品", icon: "table" },
+        hidden: true //不会在菜单栏中显示
+      },
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
-      }
+        path: "edit",
+        component: () => import("@/views/productxuChen/edit"),
+        meta: { title: "编辑商品", icon: "table" },
+        hidden: true //不会在菜单栏中显示
+      },
+      {
+        path: "hot",
+        name: "hot",
+        component: () => import("@/views/hotxuChen/index"),
+        meta: { title: "人气推荐", icon: "example" }
+      }, 
+      {
+        path: "newhot",
+        component: () => import("@/views/hotxuChen/new"),
+        meta: { title: "新增商品", icon: "table" },
+        hidden: true //不会在菜单栏中显示
+      },
+      {
+        path: "edithot",
+        component: () => import("@/views/hotxuChen/edit"),
+        meta: { title: "编辑商品", icon: "table" },
+        hidden: true //不会在菜单栏中显示
+      },
     ]
   },
 
   // 404 page must be placed at the end !!!
-  { path: '*', redirect: '/404', hidden: true }
-]
+  { path: "*", redirect: "/404", hidden: true }
+];
 
 // asyncRouterMap：需要进行权限过滤的页面
 export const asyncRoutes = [
   {
-    path: '/permission',
+    path: "/permission",
     component: Layout,
-    redirect: '/permission/page',
+    redirect: "/permission/page",
     alwaysShow: true, // will always show the root menu
-    name: 'Permission',
+    name: "Permission",
     meta: {
-      title: 'Permission',
-      icon: 'tree',
-      roles: ['admin', 'editor'] // you can set roles in root nav
+      title: "Permission",
+      icon: "tree",
+      roles: ["admin", "editor"] // you can set roles in root nav
     },
     children: [
       {
-        path: 'page',
-        component: () => import('@/views/permission/page'),
-        name: 'PagePermission',
+        path: "page",
+        component: () => import("@/views/permission/page"),
+        name: "PagePermission",
         meta: {
-          title: 'Page Permission',
-          roles: ['admin'] // or you can only set roles in sub nav
+          title: "Page Permission",
+          roles: ["admin"] // or you can only set roles in sub nav
         }
       },
       {
-        path: 'directive',
-        component: () => import('@/views/permission/directive'),
-        name: 'DirectivePermission',
+        path: "directive",
+        component: () => import("@/views/permission/directive"),
+        name: "DirectivePermission",
         meta: {
-          title: 'Directive Permission'
+          title: "Directive Permission"
           // if do not set roles, means: this page does not require permission
         }
       }
     ]
   }
-]
+];
 
-const createRouter = () => new Router({
-  // mode: 'history', // require service support
-  scrollBehavior: () => ({ y: 0 }),
-  routes: constantRoutes
-})
+const createRouter = () =>
+  new Router({
+    // mode: 'history', // require service support
+    scrollBehavior: () => ({ y: 0 }),
+    routes: constantRoutes
+  });
 
-const router = createRouter()
+const router = createRouter();
 
 // Detail see: https://github.com/vuejs/vue-router/issues/1234#issuecomment-357941465
 export function resetRouter() {
-  const newRouter = createRouter()
-  router.matcher = newRouter.matcher // reset router
+  const newRouter = createRouter();
+  router.matcher = newRouter.matcher; // reset router
 }
 
-export default router
+export default router;
