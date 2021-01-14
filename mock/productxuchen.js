@@ -5,7 +5,7 @@ const data = {
     {
       id: 87,
       title: "华为（HUAWEI）荣耀6Plus 16G双4G版",
-      add_time: "2015-04-19",
+      add_time: "2019-05-19",
       zhaiyao: "荣耀6 Plus，该机型分为两款型号，分别为PE-",
       click: 0,
       img_url:
@@ -18,7 +18,7 @@ const data = {
     {
       id: 88,
       title: "苹果Apple iPhone 6 Plus 16G 4G手机（联通三网版）",
-      add_time: "2015-04-19",
+      add_time: "2019-08-01",
       zhaiyao: "iPhone 6 Plus设计上和iPhone 6",
       click: 0,
       img_url:
@@ -31,7 +31,7 @@ const data = {
     {
       id: 89,
       title: "小米（Mi）小米Note 16G双网通版",
-      add_time: "2015-04-19",
+      add_time: "2020-04-19",
       zhaiyao: "小米Note此次采用的5.7英寸夏普/JDI分辨率",
       click: 4,
       img_url:
@@ -44,7 +44,7 @@ const data = {
     {
       id: 90,
       title: "佳能（Canon） EOS 700D 单反套机",
-      add_time: "2015-04-19",
+      add_time: "2020-05-16",
       zhaiyao: "◆ 佳能普及型单反新旗舰记忆的片段，偶然的相遇，铭",
       click: 1,
       img_url:
@@ -57,7 +57,7 @@ const data = {
     {
       id: 91,
       title: "尼康(Nikon)D3300套机（18-55mm f/3.5-5.6G VRII）（黑色）",
-      add_time: "2015-04-19",
+      add_time: "2020-05-20",
       zhaiyao: "作为D3200的升级版，尼康D3300最大特点即是",
       click: 0,
       img_url:
@@ -70,7 +70,7 @@ const data = {
     {
       id: 92,
       title: "联想（Lenovo） G510AM 15.6英寸笔记本电脑",
-      add_time: "2015-04-19",
+      add_time: "2020-06-19",
       zhaiyao: "G系列全面支持Windows 8 简体中文版，在秉",
       click: 0,
       img_url:
@@ -83,7 +83,7 @@ const data = {
     {
       id: 93,
       title: "Apple iMac MF883CH/A 21.5英寸一体机电脑",
-      add_time: "2015-04-19",
+      add_time: "2020-07-12",
       zhaiyao: "—— iMac —— 锋锐设计，锋芒表现。iMac",
       click: 0,
       img_url:
@@ -96,7 +96,7 @@ const data = {
     {
       id: 94,
       title: "金士顿（Kingston） DataTraveler SE9 32GB 金属U盘",
-      add_time: "2015-04-19",
+      add_time: "2020-10-23",
       zhaiyao: "品名：金士顿颜色：银色容量：32GB USB2.0",
       click: 0,
       img_url:

@@ -104,8 +104,20 @@
         width="110"
         align="center"
       >
-        <template slot-scope="scope">
-          <img :src="scope.row.img_url" width="50px" />
+         <template slot-scope="scope">
+          <el-popover placement="top-start" trigger="click">
+            <a :href="scope.row.img_url" target="_blank" title="查看最大化图片">
+              <img
+                :src="scope.row.img_url"
+                style="width: 300px;height: 300px"
+              />
+            </a>
+            <img
+              slot="reference"
+              :src="scope.row.img_url"
+              style="width: 50px;height: 50px; cursor:pointer"
+            />
+          </el-popover>
         </template>
       </el-table-column>
       <el-table-column align="center" label="售价" width="60">

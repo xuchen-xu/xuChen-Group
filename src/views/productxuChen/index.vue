@@ -105,7 +105,19 @@
         align="center"
       >
         <template slot-scope="scope">
-          <img :src="scope.row.img_url" width="60px" />
+          <el-popover placement="top-start" trigger="click">
+            <a :href="scope.row.img_url" target="_blank" title="查看最大化图片">
+              <img
+                :src="scope.row.img_url"
+                style="width: 300px;height: 300px"
+              />
+            </a>
+            <img
+              slot="reference"
+              :src="scope.row.img_url"
+              style="width: 50px;height: 50px; cursor:pointer"
+            />
+          </el-popover>
         </template>
       </el-table-column>
       <el-table-column align="center" label="售价" width="60">
@@ -262,12 +274,12 @@ export default {
           console.log(productList, "1111");
           var arr = [];
           arr.push(productList);
-        //   for (let i in productList) {
-        //     arr.push(productList[i]); //属性
-        //   };
-        //   console.log(arr,"33333")
-        //   this.list=arr
-        this.list=arr;
+          //   for (let i in productList) {
+          //     arr.push(productList[i]); //属性
+          //   };
+          //   console.log(arr,"33333")
+          //   this.list=arr
+          this.list = arr;
         }, 200);
         // console.log(this.options);
       } else {
@@ -275,7 +287,10 @@ export default {
       }
     },
     handleEdit(index, row) {
-      this.$router.push({ path: "/productxuchen/edit/", query: { id: row.id } });
+      this.$router.push({
+        path: "/productxuchen/edit/",
+        query: { id: row.id }
+      });
       console.log(row.id);
     }
   },
