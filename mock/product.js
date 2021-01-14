@@ -8,7 +8,7 @@ const data = {
             "price": 100,
             "product_category_id": 7,
             "product_sn": "No86577",
-            "pic": "http://39.106.163.124:8899/upload/201504/20/thumb_201504200046589514.jpg",
+            "pic": "https://img.alicdn.com/bao/uploaded/i2/2920015215/O1CN01YqVQja1oOW7NP0Yk5_!!2920015215.jpg",
             "sub_title": "111",
             "description": "111",
             "original_price": 120,
@@ -39,7 +39,7 @@ const data = {
             "price": 100,
             "product_category_id": 7,
             "product_sn": "No86578",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd2.alicdn.com/imgextra/i4/821869906/O1CN01QimhZv2N3021c0xKC_!!821869906.jpg_400x400.jpg",
             "sub_title": "111",
             "description": "111",
             "original_price": 120,
@@ -70,7 +70,7 @@ const data = {
             "price": 100,
             "product_category_id": 7,
             "product_sn": "No86579",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd3.alicdn.com/imgextra/i1/2920015215/O1CN01T9lWth1oOW8RcL7Wn_!!2920015215.jpg_400x400.jpg",
             "sub_title": "111",
             "description": "111",
             "original_price": 120,
@@ -100,7 +100,7 @@ const data = {
             "price": 100,
             "product_category_id": 7,
             "product_sn": "No86580",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd4.alicdn.com/imgextra/i3/0/O1CN01XBboOZ1C8zHMrLBV4_!!0-item_pic.jpg_400x400.jpg",
             "sub_title": "111",
             "description": "111",
             "original_price": 120,
@@ -130,7 +130,7 @@ const data = {
             "price": 100,
             "product_category_id": 7,
             "product_sn": "No86580",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd1.alicdn.com/imgextra/i3/114085891/O1CN01kWjVFd1tO7rJA07Ck_!!114085891.jpg",
             "sub_title": "111",
             "description": "111",
             "original_price": 120,
@@ -160,7 +160,7 @@ const data = {
             "price": 100,
             "product_category_id": 7,
             "product_sn": "No86580",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://img.alicdn.com/imgextra/i2/52371042/O1CN01IFJwEX1JZHLLmbOO0_!!52371042.jpg",
             "sub_title": "111",
             "description": "111",
             "original_price": 120,
@@ -190,7 +190,7 @@ const data = {
             "price": 249,
             "product_category_id": 7,
             "product_sn": "No86577",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd2.alicdn.com/imgextra/i4/52371042/O1CN01aZ88g21JZHH6U3vIi_!!52371042.jpg_400x400.jpg",
             "sub_title": "匠心剪裁，垂感质地",
             "description": "匠心剪裁，垂感质地",
             "original_price": 299.00,
@@ -220,7 +220,7 @@ const data = {
             "price": 249,
             "product_category_id": 7,
             "product_sn": "No86577",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd3.alicdn.com/imgextra/i4/821869906/O1CN01mOdJ8N2N3013lPpD8_!!821869906.jpg_400x400.jpg",
             "sub_title": "匠心剪裁，垂感质地",
             "description": "匠心剪裁，垂感质地",
             "original_price": 299.00,
@@ -250,7 +250,7 @@ const data = {
             "price": 249,
             "product_category_id": 7,
             "product_sn": "No86577",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd3.alicdn.com/imgextra/i4/821869906/O1CN01mOdJ8N2N3013lPpD8_!!821869906.jpg_400x400.jpg",
             "sub_title": "匠心剪裁，垂感质地",
             "description": "匠心剪裁，垂感质地",
             "original_price": 299.00,
@@ -280,7 +280,7 @@ const data = {
             "price": 249,
             "product_category_id": 7,
             "product_sn": "No86577",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd3.alicdn.com/imgextra/i4/821869906/O1CN01mOdJ8N2N3013lPpD8_!!821869906.jpg_400x400.jpg",
             "sub_title": "匠心剪裁，垂感质地",
             "description": "匠心剪裁，垂感质地",
             "original_price": 299.00,
@@ -310,7 +310,7 @@ const data = {
             "price": 249,
             "product_category_id": 7,
             "product_sn": "No86577",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd3.alicdn.com/imgextra/i4/821869906/O1CN01mOdJ8N2N3013lPpD8_!!821869906.jpg_400x400.jpg",
             "sub_title": "匠心剪裁，垂感质地",
             "description": "匠心剪裁，垂感质地",
             "original_price": 299.00,
@@ -340,7 +340,7 @@ const data = {
             "price": 249,
             "product_category_id": 7,
             "product_sn": "No86577",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd4.alicdn.com/imgextra/i4/2920015215/O1CN017djgeK1oOW62bBlTi_!!2920015215.jpg_400x400.jpg",
             "sub_title": "匠心剪裁，垂感质地",
             "description": "匠心剪裁，垂感质地",
             "original_price": 299.00,
@@ -370,7 +370,7 @@ const data = {
             "price": 249,
             "product_category_id": 7,
             "product_sn": "No86577",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd4.alicdn.com/imgextra/i2/313395600/O1CN015KSwsO1rEqcSJgBz8_!!313395600.jpg_400x400.jpg",
             "sub_title": "匠心剪裁，垂感质地",
             "description": "匠心剪裁，垂感质地",
             "original_price": 299.00,
@@ -400,7 +400,7 @@ const data = {
             "price": 249,
             "product_category_id": 7,
             "product_sn": "No86577",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd4.alicdn.com/imgextra/i2/313395600/O1CN015KSwsO1rEqcSJgBz8_!!313395600.jpg_400x400.jpg",
             "sub_title": "匠心剪裁，垂感质地",
             "description": "匠心剪裁，垂感质地",
             "original_price": 299.00,
@@ -430,7 +430,7 @@ const data = {
             "price": 249,
             "product_category_id": 7,
             "product_sn": "No86577",
-            "pic": "http://macro-oss.oss-cn-shenzhen.aliyuncs.com/mall/images/20180522/web.png",
+            "pic": "https://gd4.alicdn.com/imgextra/i2/313395600/O1CN015KSwsO1rEqcSJgBz8_!!313395600.jpg_400x400.jpg",
             "sub_title": "匠心剪裁，垂感质地",
             "description": "匠心剪裁，垂感质地",
             "original_price": 299.00,
@@ -794,18 +794,96 @@ const data = {
 
 
 export default [{
-    url: '/vue-admin-template/product/list',
-    type: 'get',
-    response: config => {
-        const items = data.items;
-        const { page = 1, limit = 5 } = config.query
-        return {
-            code: 20000,
-            data: {
-                total: items.length,
-                items: items.slice((page - 1) * limit, limit * page)
+        url: '/vue-admin-template/product/list',
+        type: 'get',
+        response: config => {
+            const items = data.items;
+            const { page = 1, limit = 5 } = config.query
+            return {
+                code: 20000,
+                data: {
+                    total: items.length,
+                    items: items.slice((page - 1) * limit, limit * page)
+                }
+            }
+        }
+
+    }, {
+        url: '/vue-admin-template/product/detail',
+        type: 'get',
+        response: config => {
+            const items = data.items;
+
+            const id = config.query.id;
+            var product = items.find((item) => {
+                if (item.id == id) {
+                    return item
+                }
+            })
+            return {
+                code: 20000,
+                data: {
+                    items: product
+                }
+            }
+        }
+    },
+    {
+        url: '/vue-admin-template/product/edit',
+        type: 'post',
+        response: config => {
+            const items = data.items;
+            const listOne = config.body;
+            var product = items.map((item) => {
+                if (item.id == listOne.id) {
+                    return listOne;
+                } else {
+                    return item;
+                }
+
+            })
+            console.log(product, "99999999999999999999");
+            data.items = product;
+            return {
+                code: 20000,
+                data: {
+                    message: "修改成功"
+                }
+            }
+        }
+    }, {
+        url: '/vue-admin-template/product/delete',
+        type: 'get',
+        response: config => {
+            const id = config.query.id
+            const items = data.items
+            var index = items.findIndex(item => {
+                if (item.id == id) {
+                    return true;
+                }
+            })
+            items.splice(index, 1);
+            return {
+                code: 20000,
+                data: {
+                    message: "删除商品成功"
+                }
+            }
+        }
+    },
+    {
+        url: '/vue-admin-template/product/new',
+        type: 'post',
+        response: config => {
+            const listOne = config.body;
+            listOne.id = data.items[data.items.length - 1].id + 1;
+            data.items.push(listOne);
+            return {
+                code: 20000,
+                data: {
+                    message: "添加成功"
+                }
             }
         }
     }
-
-}]
+]

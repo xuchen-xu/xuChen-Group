@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <el-card class="box-card">
+    <el-card class="box-card">
       <div
         slot="header"
         class="clearfix"
@@ -22,7 +22,7 @@
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="商品货号">
-                        <el-input v-model="formInline.name" placeholder="商品货号"></el-input>
+                        <el-input v-model="formInline.product_sn" placeholder="商品货号"></el-input>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
@@ -31,7 +31,7 @@
                     <el-cascader
                         v-model="value"
                         :options="options"
-                        @change="handleChange"></el-cascader>
+                        ></el-cascader>
               </div>
             </el-col>
 
@@ -51,67 +51,77 @@
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="上架状态">
-                        <el-select v-model="formInline.user" placeholder="请选择">
-                            <el-option label="上架" value="shanghai"></el-option>
-                            <el-option label="下架" value="beijing"></el-option>
+                        <el-select v-model="formInline.status" placeholder="请选择">
+                            <el-option label="上架" value="onSale"></el-option>
+                            <el-option label="下架" value="soldOut"></el-option>
                         </el-select>
                     </el-form-item>
                 </el-col>
                 <el-col :span="8">
                     <el-form-item label="审核状态">
-                        <el-select v-model="formInline.user" placeholder="请选择">
-                            <el-option label="审核" value="shanghai"></el-option>
-                            <el-option label="未审核" value="beijing"></el-option>
+                        <el-select v-model="formInline.checkStatus" placeholder="请选择">
+                            <el-option label="审核" value="check"></el-option>
+                            <el-option label="未审核" value="noCheck"></el-option>
                         </el-select>
                     </el-form-item>
                 </el-col>
             </el-row>
         </el-form>
-    </el-card> -->
+    </el-card>
     <el-card class="box-card data">
       <div slot="header" class="clearfix">
         <span>数据列表</span>
-        <el-button style="float: right; padding: 3px 0" type="text">添加</el-button>
+        <el-button style="float: right; padding: 3px 0" type="text" @click="goAdd()">添加</el-button>
       </div>
     </el-card>
     <el-table
       :data="list"
       border
       style="width: 1200px; margin:20px auto;"
+      class='tableClass'
     >
-      <el-table-column
-        prop="id"
-        label="编号"
-        width="180"
-      />
+     <el-table-column
+      type="selection"
+      width="55">
+    </el-table-column>
+       <el-table-column label="编号" width="100" align="center">
+          <template slot-scope="scope">{{scope.row.id}}</template>
+        </el-table-column>
       <el-table-column
         label="商品图片"
         width="180"
-        prop="pic"
-      />
-      <el-table-column
-        prop="name"
-        label="商品名称"
-      />
-      <el-table-column
-        prop="price"
-        label="价格"
-      />
-      <el-table-column
-        prop="product_sn"
-        label="货号"
-      />
-      <el-table-column
-        prop="stock"
-        label="库存"
-      />
-      <el-table-column
-        prop="stock"
-        label="销量"
-      />
+        align="center"
+      >
+        <template slot-scope="scope">
+          <el-image :src="scope.row.pic" style="width:150px; height:150px;" align="center"></el-image>
+        </template>
+      </el-table-column>
+      <el-table-column label="商品名称" width="200" align="center">
+          <template slot-scope="scope">{{scope.row.name}}</template>
+        </el-table-column>
+      <el-table-column label="价格" width="100" align="center">
+          <template slot-scope="scope">{{scope.row.price}}</template>
+        </el-table-column>
+       <el-table-column label="货号" width="100" align="center">
+          <template slot-scope="scope">{{scope.row.product_sn}}</template>
+        </el-table-column>
+      <el-table-column label="库存" width="100" align="center">
+          <template slot-scope="scope">{{scope.row.weight}}</template>
+        </el-table-column>
+         <el-table-column label="销量" width="100" align="center">
+          <template slot-scope="scope">{{scope.row.stock}}</template>
+        </el-table-column>
       <el-table-column
         label="操作"
-      />
+        class="handle"
+        align="center"
+      >
+      <template slot-scope="scope">
+        <el-button round size='small' @click="goProductDetail(scope.$index, scope.row)">查看</el-button>
+        <el-button type="primary" round size='small' @click="goEdit(scope.$index, scope.row)">编辑</el-button>
+        <el-button type="danger" icon="el-icon-delete" circle size='small' @click="handleDelete(scope.$index, scope.row)"></el-button>
+      </template>
+      </el-table-column>
 
     </el-table>
     <pagination
@@ -126,7 +136,7 @@
 
 <script>
 import Pagination from '@/components/Pagination'
-import { getProductList } from '@/api/product'
+import { getProductList,deleteProduct } from '@/api/product'
 
 export default {
   name: 'Documentation',
@@ -135,8 +145,7 @@ export default {
     return {
       formInline: {
         name: '',
-        user: '',
-        region: ''
+        product_sn: ''
       },
       brandOptions: [{
         value: '选项1',
@@ -348,7 +357,25 @@ export default {
       this.list = result.data.items
       this.total = result.data.total
       this.listLoading = false
+    },
+
+    goProductDetail(index,row){
+      this.$router.push({path:'/product/detail',query:{id: row.id}});
+    },
+
+    goEdit(index,row){
+      this.$router.push({path:'/product/edit',query:{id: row.id}});
+    },
+
+    async handleDelete(index,row){
+       const result = await deleteProduct({ id: row.id })
+       this.getProList()
+    },
+
+    goAdd(){
+       this.$router.push({path:'/product/new'});
     }
+    
   }
 }
 </script>
@@ -381,6 +408,15 @@ export default {
   .el-card__body{
     height:0;
   }
+}
+
+
+
+
+.handle{
+  display:flex;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 </style>
 
